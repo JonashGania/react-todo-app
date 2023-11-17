@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import './App.css'
+import Today from './components/Today'
 
 function App() {
 
-
   return (
-    <>
-    </>
+    <div>
+      <Today />
+    </div>
   )
 }
 
