@@ -10,7 +10,7 @@ export default function Today({todo}) {
             className='cursor-pointer'
           />
           <div className='flex flex-col'>
-            <span className='font-medium text-lg'>{todo.tasks}</span>
+            <span className='font-medium text-lg'>{todo.task}</span>
             <span className='text-sm text-green-500'>{todo.date}</span>
           </div>
           
