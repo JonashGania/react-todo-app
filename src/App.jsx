@@ -4,7 +4,7 @@ import TdTaskForm from './components/TdTaskForm'
 function App() {
 
   return (
-    <div>
+    <div className='w-full h-screen'>
       <TdTaskForm />
     </div>
   )
