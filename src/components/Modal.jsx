@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 
 export default function Modal({onSubmit, onClose}) {
   return (
-    <div className='fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.5)] flex items-center justify-center'>
+    <div className="fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.5)] flex items-center justify-center">
         <div className='bg-white px-4 py-4 w-[700px] rounded-md'>
             <div className='flex justify-end'>
                 <div className='cursor-pointer' onClick={onClose}>
@@ -62,7 +62,6 @@ export default function Modal({onSubmit, onClose}) {
                 <div className='flex justify-end pt-8'>
                     <button 
                         className='px-2 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md'
-                        onClick={onClose}
                     >Add Task
                 </button>
             </div>
