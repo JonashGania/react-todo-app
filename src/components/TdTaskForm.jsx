@@ -1,22 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaPlus } from "react-icons/fa6"
 import Today from './Today'
 import Modal from './Modal';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export default function TdTaskForm() {
     const [isOpen, setIsOpen] = useState(false);
-    const [todos, setTodos] = useState([
-        {
-            tasks: 'Learn React',
-            date: 'Nov. 25, 2023',
-            label: 'Work'
-        },
-        {
-            tasks: 'Study',
-            date: 'Nov. 25, 2023',
-            label: 'School'
-        }
-    ]);
+    const [todos, setTodos] = useState([]);
+
+    useEffect(() => {
+        const q = query(collection(db, 'todos'))
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            let todosArr = [];
+            querySnapshot.forEach((document) => {
+                todosArr.push({...document.data(), id: document.id})
+            })
+            setTodos(todosArr);
+        })
+
+        return () => unsubscribe();
+    }, [])
+
+    console.log(todos);
 
     const handleModalOpen = () => {
         setIsOpen(true)
