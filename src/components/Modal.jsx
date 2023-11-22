@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 
 
-export default function Modal({onSubmit, onClose}) {
+export default function Modal({ onClose }) {
     const [taskTitle, setTaskTitle] = useState('');
     const [date, setDate] = useState('');
     const [label, setLabel] = useState('');
