@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FaPlus } from "react-icons/fa6"
 import Today from './Today'
 import Modal from './Modal';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, doc, onSnapshot, query, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export default function TaskForm() {
@@ -22,7 +22,11 @@ export default function TaskForm() {
         return () => unsubscribe();
     }, [])
 
-    console.log(todos);
+    const toggleComplete = async(todo) => {
+        await updateDoc(doc(db, 'todos', todo.id), {
+            completed: !todo.completed
+        })
+    }
 
     const handleModalOpen = () => {
         setIsOpen(true)
@@ -39,7 +43,7 @@ export default function TaskForm() {
                     <h1 className='text-3xl font-bold pb-8 text-center'>My Tasks</h1>
                     <ul className='w-[500px] flex gap-4 flex-col pb-8 mx-auto'>
                         {todos.map((task, index) => (
-                            <Today key={index} todo={task}/>
+                            <Today key={index} todo={task} toggleComplete={toggleComplete}/>
                         ))}
                     </ul>
                     {isOpen && <Modal onClose={handleModalClose}/>}
