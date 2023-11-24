@@ -1,11 +1,11 @@
 import React from 'react'
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function Today({todo, toggleComplete}) {
+export default function Today({ todo, toggleComplete, deleteTodo }) {
   return (
     <li
       onClick={() => toggleComplete(todo)} 
-      className='flex items-center w-full justify-between hover:bg-zinc-200 transition-all duration-200 ease-in cursor-pointer px-4 py-1 rounded-md'
+      className='flex items-center w-full justify-between hover:bg-zinc-200  px-4 py-1 rounded-md'
     >
         <div className='flex items-center gap-4'>
           <input 
@@ -22,7 +22,10 @@ export default function Today({todo, toggleComplete}) {
         </div>
         <div className='flex items-center gap-8'>
           <span>{todo.label}</span>
-          <div className='cursor-pointer'>
+          <div 
+            className='cursor-pointer'
+            onClick={() => deleteTodo(todo.id)}
+          >
             <FaTrashAlt />
         </div>
         </div>
