@@ -2,12 +2,13 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
+import { format } from "date-fns";
 
 
 export default function Modal({ onClose }) {
     const [taskTitle, setTaskTitle] = useState('');
     const [date, setDate] = useState('');
-    const [label, setLabel] = useState('');
+    const [label, setLabel] = useState('Home');
     const [description, setDescription] = useState('');
 
     const handleChange = (e) => {
@@ -34,13 +35,17 @@ export default function Modal({ onClose }) {
 
     const createTodo = async(e) => {
         e.preventDefault(e);
+        const formattedDate = format(new Date(date), "MMM. dd, yyyy");
+
+
         await addDoc(collection(db, 'todos'), {
             task: taskTitle,
-            date: date,
+            date: formattedDate,
             label: label,
             description: description,
             completed: false,
         })
+        onClose();
     }
 
 
@@ -66,6 +71,7 @@ export default function Modal({ onClose }) {
                                     className='border border-gray-400 px-2 py-2 rounded-md outline-none'
                                     value={taskTitle}
                                     onChange={handleChange}
+                                    required
                                 />
                             </div>
                             <div className='flex flex-col gap-1'>
@@ -76,6 +82,7 @@ export default function Modal({ onClose }) {
                                     className='border border-gray-400 px-2 py-2 rounded-md outline-none'  
                                     value={date}  
                                     onChange={handleChange}
+                                    required
                                 />
                             </div>
                         </div>
@@ -87,6 +94,7 @@ export default function Modal({ onClose }) {
                                     className='border border-gray-400 px-2 py-2 rounded-md outline-none'
                                     value={label}
                                     onChange={handleChange}
+                                    required
                                 >
                                     <option value="Home">Home</option>
                                     <option value="Study">Study</option>
@@ -103,6 +111,7 @@ export default function Modal({ onClose }) {
                                     className='border border-gray-400 resize-none px-2 py-2 rounded-md outline-none'
                                     value={description}
                                     onChange={handleChange}
+                                    required
                                 >
                                 </textarea>
                             </div>
