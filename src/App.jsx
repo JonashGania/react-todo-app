@@ -4,13 +4,10 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Tasks from './pages/Tasks'
 import Pomodoro from './pages/Pomodoro'
-import Navbar from './components/Navbar'
 function App() {
 
   return (
     <div className='w-full h-screen bg-[rgb(3,21,37)]'>
-      <Navbar />
-
       <Routes>
         <Route path='/' element={<SignIn />}/>
         <Route path='/sign-up' element={<SignUp />}/>
