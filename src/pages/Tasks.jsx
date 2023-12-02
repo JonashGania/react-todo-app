@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FaPlus } from "react-icons/fa6"
 import Today from '../components/RenderTasks'
 import Modal from '../components/Modal'
+import Navbar from '../components/Navbar'
 import { collection, deleteDoc, doc, onSnapshot, query, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
@@ -43,6 +44,8 @@ export default function Tasks() {
 
     return (
         <div className='bg-[rgb(3,21,37)]'>
+            <Navbar />
+            
             <div className='max-w-2xl mx-auto bg-white px-4 py-4 rounded-lg'>
                 <div className='px-4 flex justify-center flex-col'>
                     <h1 className='text-3xl font-bold pb-8 text-center'>My Tasks</h1>
