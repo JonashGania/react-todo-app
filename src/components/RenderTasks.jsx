@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function Today({ todo, toggleComplete, deleteTodo }) {
+export default function RenderTasks({ todo, toggleComplete, deleteTodo }) {
   return (
     <li
       onClick={() => toggleComplete(todo)} 
