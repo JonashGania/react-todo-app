@@ -20,15 +20,14 @@ export default function SignOut() {
 
     return (
         <button 
-            className='flex items-center gap-2 group' 
+            className='flex items-center gap-2 text-gray-200' 
             onClick={handleSignOut}
         >
-            <p className='text-white font-medium'>Sign Out</p>
             <MdOutlineLogout 
-                color='white'
-                size='1.3rem'
-                className=' group-hover:translate-x-2 transition duration-100 ease-in'
+                color='rgb(209, 213, 219)'
+                size='1.2rem'
             />
+            <p className='text-gray-300 font-medium text-sm '>Sign Out</p>
         </button>
     )
 }
