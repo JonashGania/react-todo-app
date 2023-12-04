@@ -25,7 +25,13 @@ export default function SignIn() {
     const signWithEmailPass = async(e) => {
         e.preventDefault(e);
         try{
-            const user = await signInWithEmailAndPassword(auth, email, password);
+            const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+            const userInfo = {
+                userID: userCredentials.user.uid,
+                name: userCredentials.user.displayName,
+                isAuth: true,
+            }
+            localStorage.setItem('auth', JSON.stringify(userInfo));
             navigate("/tasks");
         } catch (error) {
             console.error('Error with signing-in', error);
