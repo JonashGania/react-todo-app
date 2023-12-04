@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
 
 
@@ -34,11 +34,14 @@ export default function SignUp() {
         e.preventDefault(e);
 
         try{
-            const user = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+            await updateProfile(userCredentials.user, {
+                displayName: fullName,
+            })
             setFullName('');
             setEmail('');
             setPassword('');
-            console.log(user);
+            
             navigate('/');
             
         } catch(error){
@@ -62,6 +65,7 @@ export default function SignUp() {
                             id='fullName'
                             onChange={handleSignUp}
                             required
+                            autoComplete='off'
                         />
                         <input 
                             type="text" 
