@@ -6,7 +6,7 @@ import { auth } from '../firebase';
 
 
 export default function SignUp() {
-    const [fullName, setFullName] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -16,8 +16,8 @@ export default function SignUp() {
         const value = e.target.value;
 
         switch(id){
-            case 'fullName':
-                setFullName(value);
+            case 'name':
+                setName(value);
                 break;
             case 'email':
                 setEmail(value);
@@ -36,9 +36,9 @@ export default function SignUp() {
         try{
             const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(userCredentials.user, {
-                displayName: fullName,
+                displayName: name,
             })
-            setFullName('');
+            setName('');
             setEmail('');
             setPassword('');
             
@@ -60,9 +60,9 @@ export default function SignUp() {
                     <div className='w-full flex flex-col gap-4'>
                         <input 
                             type="text" 
-                            placeholder='Full name'
+                            placeholder='Name'
                             className='outline-none text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
-                            id='fullName'
+                            id='name'
                             onChange={handleSignUp}
                             required
                             autoComplete='off'
