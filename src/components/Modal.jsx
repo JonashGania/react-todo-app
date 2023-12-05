@@ -6,11 +6,10 @@ import { format } from "date-fns";
 import { RotatingLines } from  'react-loader-spinner'
 
 
-export default function Modal({ onClose }) {
+export default function Modal({ onClose, isOpen }) {
     const [taskTitle, setTaskTitle] = useState('');
     const [date, setDate] = useState('');
     const [label, setLabel] = useState('Home');
-    const [description, setDescription] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
@@ -26,9 +25,6 @@ export default function Modal({ onClose }) {
                 break;
             case 'label':
                 setLabel(value)
-                break;
-            case 'description':
-                setDescription(value)
                 break;
             default:
                 break;
@@ -52,11 +48,13 @@ export default function Modal({ onClose }) {
                 task: taskTitle,
                 date: formattedDate,
                 label: label,
-                description: description,
                 completed: false,
                 userId: user.uid,
             })
-            
+
+            setTaskTitle('');
+            setDate('');
+            setLabel('');
             onClose();
         } catch(error){
             console.error('Error creating task', error)
@@ -68,8 +66,8 @@ export default function Modal({ onClose }) {
 
 
     return (
-        <div className="fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.5)] flex items-center justify-center">
-            <div className='bg-white px-4 py-4 w-[700px] rounded-md'>
+        <div className={`fixed top-0 left-0 w-full h-screen flex items-center justify-center ${isOpen ? 'visible bg-[rgba(0,0,0,0.5)]' : 'invisible'}`}>
+            <div className={`bg-white px-4 py-4 w-[700px] rounded-md transition-all ease-in duration-200 ${isOpen ? 'translate-y-[0%] opacity-100' : 'translate-y-[-20%] opacity-0'}`}>
                 <div className='flex justify-end'>
                     <div className='cursor-pointer' onClick={onClose}>
                         <IoClose 
@@ -130,19 +128,6 @@ export default function Modal({ onClose }) {
                                         <option value="Work">Work</option>
                                         <option value="Personal">Personal</option>
                                     </select>
-                                </div>
-                                <div className='flex flex-col gap-1'>
-                                    <label htmlFor="description" className='font-medium'>Description:</label>
-                                    <textarea 
-                                        id="description" 
-                                        cols="30" 
-                                        rows="3"
-                                        className='border border-gray-400 resize-none px-2 py-2 rounded-md outline-none'
-                                        value={description}
-                                        onChange={handleChange}
-                                        required
-                                    >
-                                    </textarea>
                                 </div>
                             </div>
                         </div>
