@@ -58,7 +58,7 @@ export default function Pomodoro() {
     <div>
       <Navbar />
       <div className='max-w-2xl mx-auto pt-5'>
-        <div className='flex items-center justify-center gap-6 bg-[rgb(25,38,49)] max-w-[445px] mx-auto py-2 rounded-3xl'>
+        <div className='flex items-center justify-center gap-6 z-20 bg-[rgb(25,38,49)] max-w-[445px] mx-auto py-2 rounded-3xl'>
           <button
             onClick={() => switchMode('work', modeDurations.work)} 
             className={`px-6 py-2 text-xl font-semibold rounded-3xl ${mode === 'work' ? 'bg-white text-black' : 'bg-transparent text-white'}`}
