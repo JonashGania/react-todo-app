@@ -28,6 +28,14 @@ export default function Tasks() {
             querySnapshot.forEach((document) => {
                 todosArr.push({...document.data(), id: document.id})
             })
+
+            todosArr.sort((taskA,taskB) => {
+                const dateA = new Date(taskA.date);
+                const dateB = new Date(taskB.date);
+
+                return dateA - dateB;
+            })
+
             setTodos(todosArr);
             setIsLoading(false);
         })
@@ -54,7 +62,7 @@ export default function Tasks() {
     }
 
     return (
-        <div className='bg-[rgb(3,21,37)]'>
+        <div className='bg-[rgb(3,21,37)] pb-10'>
             <Navbar />
             
             <div className='max-w-2xl min-h-[400px] mx-auto bg-white px-4 py-4 rounded-lg flex justify-between flex-col'>
@@ -82,7 +90,7 @@ export default function Tasks() {
                                     />
                                 ))}
                             </ul>
-                            {isOpen && <Modal onClose={handleModalClose}/>}
+                            <Modal onClose={handleModalClose} isOpen={isOpen}/>
                         </div>
                         <button 
                             className='flex items-center gap-2 text-lg px-3 py-3 bg-sky-600 hover:bg-sky-700 rounded-md text-white w-[125px] active:scale-110  transition-all duration-200 ease-in '
