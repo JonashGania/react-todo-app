@@ -2,10 +2,11 @@ import React from 'react'
 import { FaTrashAlt } from "react-icons/fa";
 
 export default function RenderTasks({ todo, toggleComplete, deleteTodo }) {
+
   return (
     <li
       onClick={() => toggleComplete(todo)} 
-      className='flex items-center w-full justify-between hover:bg-zinc-200  px-4 py-1 rounded-md'
+      className={`flex items-center w-full justify-between hover:bg-zinc-200  px-4 py-1 rounded-md ${todo.completed ? 'bg-zinc-200' :'bg-zinc-transparent'}`}
     >
         <div className='flex items-center gap-4'>
           <input 
