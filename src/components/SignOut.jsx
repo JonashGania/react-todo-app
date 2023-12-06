@@ -2,7 +2,7 @@ import React from 'react'
 import { signOut } from 'firebase/auth'
 import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth } from '../utils/firebase';
 
 
 export default function SignOut() {
