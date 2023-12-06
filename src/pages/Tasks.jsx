@@ -4,7 +4,7 @@ import RenderTasks from '../components/RenderTasks'
 import Modal from '../components/Modal'
 import Navbar from '../components/Navbar'
 import { collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
-import { db, auth } from '../firebase';
+import { db, auth } from '../utils/firebase';
 import { RotatingLines } from  'react-loader-spinner'
 import useGetUserInfo from '../hooks/UseGetUserInfo'
 
