@@ -1,5 +1,5 @@
 import { addDoc, collection } from 'firebase/firestore';
-import { db, auth } from '../firebase';
+import { db, auth } from '../utils/firebase';
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { format } from "date-fns";
