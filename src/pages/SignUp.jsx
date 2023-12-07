@@ -3,12 +3,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
+import { IoEyeOffOutline, IoEyeOutline  } from "react-icons/io5";
+import { validatePassword, validateEmail } from '../utils/emailPassValidation';
 
 
 export default function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passHidden, setPassHidden] = useState(true);
+    const [isValidated, setIsValidated] = useState(false);
     const navigate = useNavigate();
 
     const handleSignUp = (e) => {
@@ -32,6 +36,15 @@ export default function SignUp() {
 
     const signUpWithEmailPass = async(e) => {
         e.preventDefault(e);
+
+        setIsValidated(true);
+        if(!validatePassword(password)){
+            return
+        }
+
+        if(!validateEmail(email)){
+            return
+        }
 
         try{
             const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -67,22 +80,51 @@ export default function SignUp() {
                             required
                             autoComplete='off'
                         />
-                        <input 
-                            type="text" 
-                            placeholder='Email'
-                            className='outline-none text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
-                            id='email'
-                            onChange={handleSignUp}
-                            required
-                        />
-                        <input 
-                            type="password" 
-                            placeholder='Password'
-                            className='outline-none text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
-                            id='password'
-                            onChange={handleSignUp}
-                            required
-                       />
+                        <div>
+                            <input 
+                                type="text" 
+                                placeholder='Email'
+                                className='outline-none text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
+                                id='email'
+                                onChange={handleSignUp}
+                                required
+                            />
+                            {isValidated && !validateEmail(email) && (
+                                <div className='px-3 pt-1'>
+                                    <p className='text-red-500 text-sm font-medium'>* Please enter a valid email address</p>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <div className='flex items-center px-2 py-2 border border-gray-400 rounded-lg'>
+                                <input 
+                                    type={passHidden ? 'password' : 'text'}
+                                    placeholder='Password'
+                                    className='outline-none text-gray-600 w-full'
+                                    id='password'
+                                    onChange={handleSignUp}
+                                    required
+                                />
+                                <button type='button' onClick={() => setPassHidden(!passHidden)}>
+                                    {passHidden ? (
+                                        <IoEyeOffOutline 
+                                            size={'1.2rem'}
+                                            color='rgb(75, 85, 99)'
+                                        />
+                                    ) : (
+                                        <IoEyeOutline 
+                                            size={'1.2rem'}
+                                            color='rgb(75, 85, 99)'
+                                        /> 
+                                    )}
+                                </button>
+                            </div>
+                            {isValidated && !validatePassword(password) && (
+                                <div className='px-3 pt-1'>
+                                    <p className='text-red-500 text-sm font-medium'>* Password must contain at least 8 characters, Capital, Lower, and Numbers</p>
+                                </div>
+                            )}
+                        </div>
                         <button className='mt-5 text-lg px-1 py-2 bg-sky-600 hover:bg-sky-700 rounded-xl text-white  transition-all duration-200 ease-in'>Sign Up</button>
                     </div>
                 </form>
