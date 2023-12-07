@@ -4,11 +4,14 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, provider } from '../utils/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { IoEyeOffOutline, IoEyeOutline  } from "react-icons/io5";
 
 export default function SignIn() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passHidden, setPassHidden] = useState(true);
+    const [incorrectEmailPass, setIncorrectEmailPass] = useState(false);
 
     const signWithGoogle = async () => {
         const results = await signInWithPopup(auth, provider);
@@ -32,16 +35,24 @@ export default function SignIn() {
                 isAuth: true,
             }
             localStorage.setItem('auth', JSON.stringify(userInfo));
+            setIncorrectEmailPass(false);
             navigate("/tasks");
         } catch (error) {
             console.error('Error with signing-in', error);
+            setIncorrectEmailPass(true);
         }
     }
+
 
     return (
         <div className='flex justify-center items-center w-full h-screen'>
             <div className='bg-white rounded-lg px-4 pt-12 pb-4 max-w-md w-full flex justify-between flex-col items-center'>
                 <h3 className='text-2xl font-semibold pb-6'>Sign In</h3>
+                {incorrectEmailPass && (
+                    <div className='pb-5'>
+                        <p className='text-red-500 font-medium text-sm'>Your email or password maybe incorrect.</p>
+                    </div>
+                )}
                 <form className='max-w-xs w-full' onSubmit={signWithEmailPass}>
                     <div className='w-full flex flex-col gap-4'>
                         <div className='flex items-center w-full gap-3 px-2 py-2 border border-gray-400 rounded-lg'>
@@ -63,18 +74,31 @@ export default function SignIn() {
                                 color='#9ca3af'    
                             />
                             <input 
-                                type="password" 
+                                type={passHidden ? 'password' : 'text'}
                                 placeholder='Password'
                                 className='outline-none text-gray-600 w-full'
                                 required
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            <button type='button' onClick={() => setPassHidden(!passHidden)}>
+                                {passHidden ? (
+                                    <IoEyeOffOutline 
+                                        size={'1.2rem'}
+                                        color='rgb(75, 85, 99)'
+                                    />
+                                ) : (
+                                    <IoEyeOutline 
+                                        size={'1.2rem'}
+                                        color='rgb(75, 85, 99)'
+                                    /> 
+                                )}
+                            </button>
                         </div>
                         <button className='mt-5 text-lg px-1 py-2 bg-sky-600 hover:bg-sky-700 rounded-xl text-white'>Sign In</button>
                     </div>
                 </form>
                 <span className='text-gray-500 py-4'>Or</span>
-                <button 
+                <button
                     className='cursor-pointer hover:bg-[rgba(0,0,0,0.2)] max-w-xs w-full px-2 py-2 rounded-lg flex justify-center transition-all duration-200 ease-in'
                     onClick={signWithGoogle}
                 >   
