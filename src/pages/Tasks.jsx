@@ -13,7 +13,7 @@ export default function Tasks() {
     const [isOpen, setIsOpen] = useState(false);
     const [todos, setTodos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { name } = useGetUserInfo();
+    const userInfo = useGetUserInfo();
 
     useEffect(() => {
         const user = auth.currentUser;
@@ -79,7 +79,7 @@ export default function Tasks() {
                 ) : (
                     <>
                         <div className='px-4 flex flex-col justify-between'>
-                            <h1 className='text-3xl font-bold pb-8 text-center'>{name}&apos;s Tasks</h1>
+                            <h1 className='text-3xl font-bold pb-8 text-center'>{userInfo.name}&apos;s Tasks</h1>
                             <ul className='w-[500px] flex gap-4 flex-col pb-8 mx-auto'>
                                 {todos.map((task, index) => (
                                     <RenderTasks 
