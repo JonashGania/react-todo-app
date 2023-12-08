@@ -17,8 +17,6 @@ export default function SignIn() {
         const results = await signInWithPopup(auth, provider);
         const authInfo = {
             userID: results.user.uid,
-            name: results.user.displayName,
-            profilePhoto: results.user.photoURL,
             isAuth: true,
         }
         localStorage.setItem('auth', JSON.stringify(authInfo));
@@ -31,7 +29,6 @@ export default function SignIn() {
             const userCredentials = await signInWithEmailAndPassword(auth, email, password);
             const userInfo = {
                 userID: userCredentials.user.uid,
-                name: userCredentials.user.displayName,
                 isAuth: true,
             }
             localStorage.setItem('auth', JSON.stringify(userInfo));
