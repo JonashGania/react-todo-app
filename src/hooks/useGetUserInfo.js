@@ -1,5 +1,24 @@
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+
 export default function useGetUserInfo() {
-  const { name, profilePhoto } = JSON.parse(localStorage.getItem('auth')) || {};
+  const auth = getAuth();
+  const [userInfo, setUserInfo] = useState(null);
   
-  return { name, profilePhoto };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if(user){
+        setUserInfo({
+          name: user.displayName,
+          photoURL: user.photoURL,
+        });
+      } else {
+        setUserInfo(null)
+      }
+    });
+
+    return() => unsubscribe();
+  }, [auth])
+  
+  return userInfo;
 }
