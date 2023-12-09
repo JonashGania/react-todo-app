@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FaTrashAlt } from "react-icons/fa";
 
 export default function RenderTasks({ todo, toggleComplete, deleteTodo }) {
@@ -32,4 +33,17 @@ export default function RenderTasks({ todo, toggleComplete, deleteTodo }) {
         </div>
     </li>
   )
+}
+
+
+RenderTasks.propTypes = {
+  todo: PropTypes.shape([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.string,
+    PropTypes.instanceOf(Date),
+
+  ]),
+  toggleComplete: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
 }
