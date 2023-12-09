@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import SignOut from './SignOut'
 
 export default function Dropdown({ name, profilePhoto, onClose }) {
@@ -51,4 +52,11 @@ export default function Dropdown({ name, profilePhoto, onClose }) {
             </div>
         </div>
     )
+}
+
+
+Dropdown.propTypes = {
+    name: PropTypes.string,
+    profilePhoto: PropTypes.string,
+    onClose: PropTypes.func,
 }
