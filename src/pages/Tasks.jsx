@@ -3,10 +3,12 @@ import { FaPlus } from "react-icons/fa6"
 import RenderTasks from '../components/RenderTasks'
 import Modal from '../components/Modal'
 import Navbar from '../components/Navbar'
+import TogglePage from '../components/TogglePage'
 import { collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
 import { db, auth } from '../utils/firebase';
 import { RotatingLines } from  'react-loader-spinner'
 import useGetUserInfo from '../hooks/UseGetUserInfo'
+
 
 
 export default function Tasks() {
@@ -62,14 +64,14 @@ export default function Tasks() {
     }
 
     return (
-        <div className='bg-[rgb(3,21,37)] pb-10'>
+        <div className='pb-10'>
             <Navbar />
-            
+            <TogglePage />
             <div className='max-w-2xl min-h-[400px] mx-auto bg-white px-4 py-4 rounded-lg flex justify-between flex-col'>
                 {isLoading ? (
                     <div className='w-full min-h-[400px] grid place-items-center'>
                         <RotatingLines 
-                            strokeColor="rgb(2,132,199)"
+                            strokeColor="rgb(21,128,61)"
                             strokeWidth="5"
                             animationDuration="0.75"
                             width="70"
@@ -93,7 +95,7 @@ export default function Tasks() {
                             <Modal onClose={handleModalClose} isOpen={isOpen}/>
                         </div>
                         <button 
-                            className='flex items-center gap-2 text-lg px-3 py-3 bg-sky-600 hover:bg-sky-700 rounded-md text-white w-[125px] active:scale-110  transition-all duration-200 ease-in '
+                            className='flex items-center gap-2 text-lg px-3 py-3 bg-green-600 hover:bg-green-700 rounded-md text-white w-[125px] active:translate-y-2  transition-all duration-200 ease-in '
                             onClick={handleModalOpen}
                         >
                             <FaPlus size={'1.1rem'} color='white'/>
