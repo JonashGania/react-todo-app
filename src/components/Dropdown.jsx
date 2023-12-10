@@ -22,7 +22,7 @@ export default function Dropdown({ name, profilePhoto, onClose }) {
     return (
         <div 
             id='dropdown-container'
-            className='bg-[rgb(17,32,46)] shadow-lg shadow-black px-2 py-2 absolute min-w-[150px] -right-11 -bottom-20'
+            className=' bg-white shadow-md shadow-gray-400 px-2 py-2 absolute min-w-[150px] -right-11 -bottom-[90px]'
         >
             <div className='flex flex-col'>
                 <div className='flex items-center gap-3 pb-3'>
@@ -42,7 +42,7 @@ export default function Dropdown({ name, profilePhoto, onClose }) {
                         )}
                     </div>
                     <div>
-                        <p className='text-white font-medium text-sm'>{name}</p>
+                        <p className='text-black font-medium text-sm'>{name}</p>
                         <p className='text-sm text-stone-500'>You</p>
                     </div>
                 </div>
