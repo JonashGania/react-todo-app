@@ -24,10 +24,10 @@ export default function SignOut() {
             onClick={handleSignOut}
         >
             <MdOutlineLogout 
-                color='rgb(209, 213, 219)'
+                color='rgb(107, 114, 128)'
                 size='1.2rem'
             />
-            <p className='text-gray-300 font-medium text-sm '>Sign Out</p>
+            <p className='text-gray-500 font-medium text-sm '>Sign Out</p>
         </button>
     )
 }
