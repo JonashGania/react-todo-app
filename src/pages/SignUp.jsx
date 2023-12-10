@@ -64,10 +64,10 @@ export default function SignUp() {
 
     return (
         <div className='flex justify-center items-center w-full h-screen'>
-            <div className='bg-white rounded-lg px-4 pt-12 pb-4 max-w-md w-full flex justify-center flex-col items-center'>
+            <div className='rounded-lg px-4 pt-12 pb-4 max-w-[500px] w-full flex justify-center flex-col items-center border border-gray-200'>
                 <h3 className='text-2xl font-semibold pb-6'>Sign Up</h3>
                 <form 
-                    className='max-w-xs w-full' 
+                    className='max-w-sm w-full' 
                     onSubmit={signUpWithEmailPass}
                 >
                     <div className='w-full flex flex-col gap-4'>
@@ -125,7 +125,7 @@ export default function SignUp() {
                                 </div>
                             )}
                         </div>
-                        <button className='mt-5 text-lg px-1 py-2 bg-sky-600 hover:bg-sky-700 rounded-xl text-white  transition-all duration-200 ease-in'>Sign Up</button>
+                        <button className='mt-5 text-lg px-1 py-2 bg-[#1B1C3B] hover:bg-[#22234b] rounded-xl text-white  transition-all duration-200 ease-in'>Sign Up</button>
                     </div>
                 </form>
                 <p className='text-sm pt-12'>
