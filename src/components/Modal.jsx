@@ -134,7 +134,7 @@ export default function Modal({ onClose, isOpen }) {
                         </div>
                         <div className='flex justify-end pt-8'>
                             <button 
-                                className='px-2 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md'
+                                className='px-2 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md'
                             >Add Task
                             </button>
                         </div>
