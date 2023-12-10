@@ -8,7 +8,7 @@ import { PrivateRoutes } from './PrivateRoutes'
 function App() {
 
   return (
-    <div className='w-full h-screen bg-[rgb(3,21,37)]'>
+    <div className='w-full h-screen'>
       <Routes>
         <Route path='/' element={<SignIn />}/>
         <Route path='/sign-up' element={<SignUp />}/>
