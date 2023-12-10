@@ -43,14 +43,14 @@ export default function SignIn() {
 
     return (
         <div className='flex justify-center items-center w-full h-screen'>
-            <div className='bg-white rounded-lg px-4 pt-12 pb-4 max-w-md w-full flex justify-between flex-col items-center'>
+            <div className='rounded-md px-4 pt-12 pb-4 max-w-[500px] w-full flex justify-between flex-col items-center border border-gray-200'>
                 <h3 className='text-2xl font-semibold pb-6'>Sign In</h3>
                 {incorrectEmailPass && (
                     <div className='pb-5'>
                         <p className='text-red-500 font-medium text-sm'>Your email or password maybe incorrect.</p>
                     </div>
                 )}
-                <form className='max-w-xs w-full' onSubmit={signWithEmailPass}>
+                <form className='max-w-sm w-full' onSubmit={signWithEmailPass}>
                     <div className='w-full flex flex-col gap-4'>
                         <div className='flex items-center w-full gap-3 px-2 py-2 border border-gray-400 rounded-lg'>
                             <LuMail 
@@ -91,19 +91,19 @@ export default function SignIn() {
                                 )}
                             </button>
                         </div>
-                        <button className='mt-5 text-lg px-1 py-2 bg-sky-600 hover:bg-sky-700 rounded-xl text-white'>Sign In</button>
+                        <button className='mt-5 text-lg px-1 py-2 bg-[#1B1C3B] hover:bg-[#22234b] rounded-xl text-white'>Sign In</button>
                     </div>
                 </form>
                 <span className='text-gray-500 py-4'>Or</span>
                 <button
-                    className='cursor-pointer hover:bg-[rgba(0,0,0,0.2)] max-w-xs w-full px-2 py-2 rounded-lg flex justify-center transition-all duration-200 ease-in'
+                    className='cursor-pointer hover:bg-[rgba(0,0,0,0.2)] max-w-sm w-full px-2 py-2 rounded-lg flex justify-center transition-all duration-200 ease-in'
                     onClick={signWithGoogle}
                 >   
                     <FcGoogle 
                         size={'1.5rem'}
                         className='mr-2'
                     />
-                    Login with Google 
+                    Continue with Google 
                 </button>
                 <p className='text-sm pt-12'>
                     Don&apos;t have an account?
