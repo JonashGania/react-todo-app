@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
+import TogglePage from '../components/TogglePage';
 import { MdRestartAlt } from "react-icons/md";
 
 
@@ -57,6 +58,7 @@ export default function Pomodoro() {
   return (
     <div>
       <Navbar />
+      <TogglePage />
       <div className='max-w-2xl mx-auto pt-5'>
         <div className='flex items-center justify-center gap-6 z-20 bg-[rgb(25,38,49)] max-w-[445px] mx-auto py-2 rounded-3xl'>
           <button
@@ -80,7 +82,7 @@ export default function Pomodoro() {
         </div>
 
         <div className='flex justify-center items-center pt-12'>
-          <p className='text-white text-[5rem] font-semibold'>
+          <p className='text-black text-[5rem] font-semibold'>
             {formatTime(timer)}
           </p>
         </div>
@@ -88,14 +90,14 @@ export default function Pomodoro() {
         <div className='flex justify-center items-center pt-10 gap-7'>
           <button 
             onClick={handleStartPause}
-            className='px-7 py-2 bg-white text-black text-xl font-semibold rounded-3xl active:translate-y-2 duration-200 ease-in'
+            className='px-7 py-2 bg-[rgb(25,38,49)] text-white text-xl font-semibold rounded-3xl active:translate-y-1 '
           >
             {isActive ? "Pause" : "Start"}
           </button>
           <button onClick={handleRestart}>
             <MdRestartAlt 
               size={'3.5rem'}
-              color='white'
+              color='rgb(25,38,49)'
             />
           </button>
         </div>
