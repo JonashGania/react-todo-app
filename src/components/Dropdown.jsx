@@ -26,7 +26,7 @@ export default function Dropdown({ name, profilePhoto, onClose }) {
         >
             <div className='flex flex-col'>
                 <div className='flex items-center gap-3 pb-3'>
-                    <div>
+                    <div className='border border-gray-600 rounded-[50%]'>
                         {profilePhoto ? (
                             <img 
                                 src={profilePhoto} 
