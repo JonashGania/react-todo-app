@@ -3,6 +3,7 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Tasks from '../pages/Tasks'
 import Pomodoro from '../pages/Pomodoro'
+import ErrorPage from '../components/ErrorPage'
 import { PrivateRoutes } from './PrivateRoutes'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/tasks' element={<Tasks />}/>
           <Route path='/pomodoro' element={<Pomodoro/>}/>
         </Route> 
+        <Route path='*' element={<ErrorPage />}/>
       </Routes>
     </div>
   )
