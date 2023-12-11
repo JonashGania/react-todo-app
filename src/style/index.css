@@ -12,4 +12,17 @@
     bottom: -8px;
     border-radius: 10px;
 }
-
+.errorPage::before{
+    content: "";
+    background-image: url("/errorPage-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    opacity: 0.15;
+    z-index: -1;
+}
