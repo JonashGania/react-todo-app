@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { LuMail, LuLock  } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, provider } from '../utils/firebase';
+import { auth, provider } from '../config/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { IoEyeOffOutline, IoEyeOutline  } from "react-icons/io5";
 

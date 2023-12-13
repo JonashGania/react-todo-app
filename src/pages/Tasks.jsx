@@ -5,7 +5,7 @@ import Modal from '../components/Modal'
 import Navbar from '../components/Navbar'
 import TogglePage from '../components/TogglePage'
 import { collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
-import { db, auth } from '../utils/firebase';
+import { db, auth } from '../config/firebase'
 import { RotatingLines } from  'react-loader-spinner'
 import useGetUserInfo from '../hooks/UseGetUserInfo'
 

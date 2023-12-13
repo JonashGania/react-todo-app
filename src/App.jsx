@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import SignIn from '../pages/SignIn'
-import SignUp from '../pages/SignUp'
-import Tasks from '../pages/Tasks'
-import Pomodoro from '../pages/Pomodoro'
-import ErrorPage from '../components/ErrorPage'
-import { PrivateRoutes } from './PrivateRoutes'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import Tasks from './pages/Tasks'
+import Pomodoro from './pages/Pomodoro'
+import ErrorPage from './components/ErrorPage'
+import { PrivateRoutes } from './components/PrivateRoutes'
 
 function App() {
 

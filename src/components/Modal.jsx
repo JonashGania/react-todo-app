@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { addDoc, collection } from 'firebase/firestore';
-import { db, auth } from '../utils/firebase';
+import { db, auth } from '../config/firebase';
 import { IoClose } from "react-icons/io5";
 import { format } from "date-fns";
 import { RotatingLines } from  'react-loader-spinner'
