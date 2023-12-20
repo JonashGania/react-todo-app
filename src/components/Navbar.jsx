@@ -8,7 +8,7 @@ import { IoChevronDownOutline } from "react-icons/io5";
 export default function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const userInfo = useGetUserInfo();
-
+    const photoURL = userInfo?.photoURL || '/profile.png';
     const handleDropdownOpen = (e) => {
         e.stopPropagation();
         setIsDropdownOpen(true)
@@ -30,7 +30,8 @@ export default function Navbar() {
                         onClick={handleDropdownOpen}
                         className={`flex items-center gap-2 cursor-default justify-end py-[3px] px-1 rounded-3xl transition-all duration-100 ease-in group ${isDropdownOpen ? 'bg-black hover:bg-black' : 'bg-[#ffffff8c] hover:bg-black'}`}
                     >
-                        {userInfo?.photoURL ? (
+                        <img src={photoURL} alt="Avatar" className='rounded-[50%] w-6'/>
+                        {/* {userInfo?.photoURL ? (
                             <img 
                                 src={userInfo.photoURL} 
                                 alt="Avatar" 
@@ -42,7 +43,7 @@ export default function Navbar() {
                                 alt="Avatar" 
                                 className='rounded-[50%] w-6'
                             />
-                        )}
+                        )} */}
                         <IoChevronDownOutline
                             color='white'
                             size='1rem'
