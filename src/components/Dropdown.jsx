@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import SignOut from './SignOut'
 
@@ -22,7 +22,7 @@ export default function Dropdown({ name, profilePhoto, onClose }) {
     return (
         <div 
             id='dropdown-container'
-            className=' bg-white shadow-md shadow-gray-400 px-2 py-2 absolute min-w-[150px] -right-11 -bottom-[90px]'
+            className=' bg-white shadow-md z-30 shadow-gray-400 px-2 py-2 absolute min-w-[150px] -right-7 lg:-right-16 -bottom-[90px] mx-4'
         >
             <div className='flex flex-col'>
                 <div className='flex items-center gap-3 pb-3'>
