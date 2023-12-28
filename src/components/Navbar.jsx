@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 import useGetUserInfo from '../hooks/UseGetUserInfo'
 import Dropdown from './Dropdown';
 import { IoChevronDownOutline } from "react-icons/io5";
@@ -20,7 +19,7 @@ export default function Navbar() {
 
     return (
         <header className='w-full bg-green-700'>
-            <nav className='max-w-4xl mx-auto flex items-center justify-between py-2'>
+            <nav className='max-w-4xl mx-auto flex px-4 items-center justify-between py-2'>
                 <div className='flex items-center gap-2'>
                     <img src="/logo.png" alt="logo" className=' w-10'/>
                     <p className='text-lg text-white font-medium'>PomoTask</p>
@@ -31,19 +30,6 @@ export default function Navbar() {
                         className={`flex items-center gap-2 cursor-default justify-end py-[3px] px-1 rounded-3xl transition-all duration-100 ease-in group ${isDropdownOpen ? 'bg-black hover:bg-black' : 'bg-[#ffffff8c] hover:bg-black'}`}
                     >
                         <img src={photoURL} alt="Avatar" className='rounded-[50%] w-6'/>
-                        {/* {userInfo?.photoURL ? (
-                            <img 
-                                src={userInfo.photoURL} 
-                                alt="Avatar" 
-                                className='rounded-[50%] w-6'    
-                            />
-                        ) : (
-                            <img 
-                                src="/profile.png" 
-                                alt="Avatar" 
-                                className='rounded-[50%] w-6'
-                            />
-                        )} */}
                         <IoChevronDownOutline
                             color='white'
                             size='1rem'
