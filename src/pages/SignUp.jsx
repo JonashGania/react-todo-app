@@ -64,7 +64,7 @@ export default function SignUp() {
 
     return (
         <div className='flex justify-center items-center w-full h-screen'>
-            <div className='rounded-lg px-4 pt-12 pb-4 max-w-[500px] w-full flex justify-center flex-col items-center border border-gray-200'>
+            <div className='rounded-lg px-4 pt-12 pb-4 max-w-[500px] w-full flex justify-center flex-col items-center border border-gray-200 mx-2'>
                 <h3 className='text-2xl font-semibold pb-6'>Sign Up</h3>
                 <form 
                     className='max-w-sm w-full' 
@@ -74,7 +74,7 @@ export default function SignUp() {
                         <input 
                             type="text" 
                             placeholder='Name'
-                            className='outline-none text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
+                            className='outline-none sm:text-base text-sm text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
                             id='name'
                             onChange={handleSignUp}
                             required
@@ -84,7 +84,7 @@ export default function SignUp() {
                             <input 
                                 type="text" 
                                 placeholder='Email'
-                                className='outline-none text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
+                                className='outline-none sm:text-base text-sm text-gray-600 w-full px-2 py-2 border border-gray-400 rounded-lg'
                                 id='email'
                                 onChange={handleSignUp}
                                 required
@@ -100,7 +100,7 @@ export default function SignUp() {
                                 <input 
                                     type={passHidden ? 'password' : 'text'}
                                     placeholder='Password'
-                                    className='outline-none text-gray-600 w-full'
+                                    className='outline-none text-gray-600 w-full sm:text-base text-sm'
                                     id='password'
                                     onChange={handleSignUp}
                                     required
@@ -125,7 +125,7 @@ export default function SignUp() {
                                 </div>
                             )}
                         </div>
-                        <button className='mt-5 text-lg px-1 py-2 bg-[#1B1C3B] hover:bg-[#22234b] rounded-xl text-white  transition-all duration-200 ease-in'>Sign Up</button>
+                        <button className='mt-5 text-base sm:text-lg px-1 py-2 bg-[#1B1C3B] hover:bg-[#22234b] rounded-xl text-white  transition-all duration-200 ease-in'>Sign Up</button>
                     </div>
                 </form>
                 <p className='text-sm pt-12'>
