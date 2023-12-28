@@ -68,7 +68,7 @@ export default function Modal({ onClose, isOpen }) {
 
     return (
         <div className={`fixed top-0 left-0 w-full h-screen flex items-center justify-center ${isOpen ? 'visible bg-[rgba(0,0,0,0.5)]' : 'invisible'}`}>
-            <div className={`bg-white px-4 py-4 w-[700px] rounded-md transition-all ease-in duration-200 ${isOpen ? 'translate-y-[0%] opacity-100' : 'translate-y-[-20%] opacity-0'}`}>
+            <div className={`bg-white mx-4 px-4 py-4 max-w-[700px] w-full rounded-md transition-all ease-in duration-200 ${isOpen ? 'translate-y-[0%] opacity-100' : 'translate-y-[-20%] opacity-0'}`}>
                 <div className='flex justify-end'>
                     <div className='cursor-pointer' onClick={onClose}>
                         <IoClose 
@@ -79,18 +79,30 @@ export default function Modal({ onClose, isOpen }) {
                 </div>
                 {isLoading ? (
                     <div className='grid place-items-center'>
-                        <RotatingLines 
-                            strokeColor="rgb(2,132,199)"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="70"
-                            visible={true}
-                        />
+                        <div className='sm:block hidden'>
+                            <RotatingLines 
+                                strokeColor="rgb(21,128,61)"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="70"
+                                visible={true}
+                            />
+                        </div>
+                        <div className='sm:hidden block'>
+                            <RotatingLines 
+                                strokeColor="rgb(21,128,61)"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="50"
+                                visible={true}
+                            />
+                        </div>
+
                     </div>
                 ) : (
                     <form onSubmit={createTodo}>
-                        <div className='flex gap-8'>
-                            <div className='w-[50%] flex gap-4 flex-col'>
+                        <div className='flex gap-8 flex-wrap sm:flex-nowrap'>
+                            <div className='sm:w-[50%] w-full flex gap-4 flex-col'>
                                 <div className='flex flex-col gap-1'>
                                     <label htmlFor="title" className='font-medium'>Title:</label>
                                     <input 
@@ -114,7 +126,7 @@ export default function Modal({ onClose, isOpen }) {
                                     />
                                 </div>
                             </div>
-                            <div className='w-[50%] flex gap-4 flex-col'>
+                            <div className='sm:w-[50%] w-full flex gap-4 flex-col'>
                                 <div className='flex flex-col gap-1'>
                                     <label htmlFor="label" className='font-medium'>Label:</label>
                                     <select 
