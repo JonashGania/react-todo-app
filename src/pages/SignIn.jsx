@@ -43,7 +43,7 @@ export default function SignIn() {
 
     return (
         <div className='flex justify-center items-center w-full h-screen'>
-            <div className='rounded-md px-4 pt-12 pb-4 max-w-[500px] w-full flex justify-between flex-col items-center border border-gray-200'>
+            <div className='rounded-md px-4 mx-2 pt-12 pb-4 max-w-[500px] w-full flex justify-between flex-col items-center border border-gray-200'>
                 <h3 className='text-2xl font-semibold pb-6'>Sign In</h3>
                 {incorrectEmailPass && (
                     <div className='pb-5'>
@@ -60,7 +60,7 @@ export default function SignIn() {
                             <input 
                                 type="text" 
                                 placeholder='Email'
-                                className='outline-none text-gray-600 w-full'
+                                className='outline-none text-gray-600 w-full sm:text-base text-sm'
                                 required
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -73,7 +73,7 @@ export default function SignIn() {
                             <input 
                                 type={passHidden ? 'password' : 'text'}
                                 placeholder='Password'
-                                className='outline-none text-gray-600 w-full'
+                                className='outline-none text-gray-600 w-full sm:text-base text-sm'
                                 required
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -91,7 +91,7 @@ export default function SignIn() {
                                 )}
                             </button>
                         </div>
-                        <button className='mt-5 text-lg px-1 py-2 bg-[#1B1C3B] hover:bg-[#22234b] rounded-xl text-white'>Sign In</button>
+                        <button className='mt-5 text-base sm:text-lg px-1 py-2 bg-[#1B1C3B] hover:bg-[#22234b] rounded-xl text-white'>Sign In</button>
                     </div>
                 </form>
                 <span className='text-gray-500 py-4'>Or</span>
